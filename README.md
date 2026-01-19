@@ -1,6 +1,7 @@
 # RUDnik-sputnik
 # СИМУЛЯТОР ДЛЯ ОБУЧЕНИЯ ОПЕРАТОРОВ СПУТНИКА  
 *(программое обеспечение и ИИ-помощник)*
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/1a387f7f-6e79-446b-b3cd-6195f016aa4a" />
 
 ---
 
