@@ -3,6 +3,7 @@ import aiohttp
 API_URL = "https://amari-formic-helene.ngrok-free.dev/v1/chat/completions"
 
 SYSTEM_PROMPT = """
+Тебя зовут - VEGA или же Вега (пол женский)
 Ты — эксперт по анализу спутниковых систем. 
 Твоя задача: дать **конкретные, понятные и краткие рекомендации инженеру**, исходя из предоставленных данных или логов. 
 Правила:
@@ -38,3 +39,4 @@ async def ai_answer(user_text: str) -> str:
 
     except Exception as e:
         return f"[Ошибка ИИ]: {e}"
+
