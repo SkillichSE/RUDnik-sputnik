@@ -196,5 +196,5 @@
 • Система отчетов  
 • Пилотный модуль для университета  
 
-### Contact @Skillich
+### Contact @Skillich or @Fedorniger
 • To become contributor or smh
