@@ -1,6 +1,6 @@
 import aiohttp
 
-API_URL = "https://amari-formic-helene.ngrok-free.dev/v1/chat/completions"
+API_URL = "ngrok-gycha/v1/chat/completions" # To change
 
 SYSTEM_PROMPT = """
 Тебя зовут - VEGA или же Вега (пол женский)
@@ -39,4 +39,5 @@ async def ai_answer(user_text: str) -> str:
 
     except Exception as e:
         return f"[Ошибка ИИ]: {e}"
+
 
