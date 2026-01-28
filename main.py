@@ -80,50 +80,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.consoleTextEdit.append("[PACK] Done\n")
         self.command_buffer.clear()
 
-    # --- SGP4 Handling ---
-    async def load_satellite_async(self, sat_number):
-        await asyncio.to_thread(self.load_satellite, sat_number)
-
-    def load_satellite(self, sat_number):
-        try:
-            index = (sat_number - 1) * 3
-            name, line1, line2 = dataset_sat(index)
-        except (IndexError, ValueError):
-            self.consoleTextEdit.append("❌ Satellite not found")
-            return
-
-        data = parse_tle_fields(line1, line2)
-
-        # === TELEMETRY UI ===
-        self.name_value.setText(name)
-        self.num_value.setText(data["norad_id"])
-        self.designator_value.setText(data["designator"])
-        self.date_time_value.setText(data["epoch"])
-        self.inclination_value.setText(data["inclination"])
-        self.ascendation_value.setText(data["raan"])
-        self.eccentricity_value.setText(data["eccentricity"])
-        self.perrige_value.setText(data["perigee"])
-        self.anomaly_value.setText(data["mean_anomaly"])
-        self.mean_motion_value.setText(data["mean_motion"])
-        self.ballistic_value.setText(data["ballistic"])
-        self.dirrative_value.setText(data["derivative2"])
-        self.pressure_value.setText(data["ballistic"])
-        self.ephemeris_value.setText(data["ephemeris"])
-        self.element_value.setText(data["element"])
-        self.rottation_value.setText(data["revolution"])
-
-        # === SGP4 ===
-        self.consoleTextEdit.append("SGP-4 simulation started")
-        result = simulate(
-            line1,
-            line2,
-            datetime.now(timezone.utc),
-            hours=1,
-            step_min=10
-        )
-        for t, lat, lon, r in result:
-            self.consoleTextEdit.append(f"{t} | LAT {lat:.2f} | LON {lon:.2f} | R {r:.1f} km")
-
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
@@ -135,3 +91,4 @@ if __name__ == "__main__":
 
     with loop:
         loop.run_forever()
+
